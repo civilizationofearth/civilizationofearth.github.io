@@ -14,6 +14,15 @@
 .language-dropdown a{display:block;padding:8px 10px;border-radius:7px;color:#132238;text-decoration:none;white-space:nowrap}
 .language-dropdown a:hover{background:rgba(19,34,56,.08)}
 html[dir="rtl"] .language-dropdown{right:auto;left:0;text-align:right}
+
+.materialGridDocs{grid-template-columns:repeat(2,minmax(0,1fr))}
+.materialGridDocs .materialDoc{background:#0c2435;color:#fff;padding:34px 30px;min-height:190px;display:flex;flex-direction:column;align-items:flex-start}
+.materialGridDocs .materialDoc b{font-size:28px;line-height:1.12;font-family:Georgia,serif}
+.materialGridDocs .materialDoc p{margin:14px 0 28px;color:rgba(255,255,255,.72);font-size:15px}
+.materialGridDocs .docLangs{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
+.materialGridDocs .docLangs a{display:inline-flex;align-items:center;justify-content:center;width:58px;height:36px;min-width:58px;min-height:0;padding:0;border:1px solid rgba(111,203,255,.55);border-radius:999px;color:#7fd3ff;text-decoration:none;font:600 13px/1 Arial,sans-serif;letter-spacing:.08em}
+.materialGridDocs .docLangs a:hover{background:rgba(127,211,255,.12)}
+@media(max-width:760px){.materialGridDocs{grid-template-columns:1fr}.materialGridDocs .materialDoc{min-height:170px}}
 </style>
 </head>
 <body>
@@ -39,7 +48,10 @@ html[dir="rtl"] .language-dropdown{right:auto;left:0;text-align:right}
 <section class="identity"><div class="identityText"><div class="kicker" data-i18n="identityKicker">ОБЩАЯ ИДЕНТИЧНОСТЬ</div><h2 data-i18n="identityTitle">Мир, в котором границы перестают делать людей чужими.</h2><p data-i18n="identityText">Страны, культуры, языки и традиции могут сохранять свою уникальность. Одновременно мы можем осознать нашу общую идентичность людей Земли. Это следующий уровень самоосознания человечества и самоидентификации каждого человека.</p><blockquote data-i18n="earthPerson">Я — человек Земли.</blockquote></div></section>
 <section class="film" id="film"><div><div class="kicker" data-i18n="filmKicker">ФИЛЬМ</div><h2 data-i18n="filmTitle">Цивилизация Земли</h2><p data-i18n="filmText">Трёхминутный фильм о проекте. Доступны русская, английская и украинская версии.</p></div><div class="videoFrame"><div class="videoLanguages" role="group" aria-label="Film language"><button class="videoLangBtn active" type="button" data-src="assets/civilization-of-earth-ru.mp4" data-note="Русская версия · 3 мин">RU</button><button class="videoLangBtn" type="button" data-src="assets/civilization-of-earth-en.mp4" data-note="English version · 3 min">EN</button><button class="videoLangBtn" type="button" data-src="assets/civilization-of-earth-uk.mp4" data-note="Українська версія · 3 хв">UA</button></div><video controls preload="metadata" poster="images/hero-earth.jpg"><source src="assets/civilization-of-earth-ru.mp4" type="video/mp4">Your browser does not support HTML5 video.</video><div class="videoNote">Русская версия · 3 мин</div></div></section>
 <section class="manifesto" id="manifesto"><div class="kicker" data-i18n="manifestoKicker">МАНИФЕСТ</div><h2 data-i18n="manifestoTitle">Мы можем выбрать будущее.</h2><p data-i18n="manifestoText">Человечество обладает огромными знаниями, технологиями и возможностями, но значительная часть этой энергии направляется на конфликты и разрушение. Следующий этап развития цивилизации может состоять в том, чтобы научиться созидать в сотрудничестве друг с другом и с планетой.</p><a class="textLink" href="#materials" data-i18n="readМатериалы">Материалы проекта →</a></section>
-<section class="materials" id="materials"><div class="kicker" data-i18n="materialsKicker">БИБЛИОТЕКА ПРОЕКТА</div><h2 data-i18n="materialsTitle">Материалы</h2><div class="materialGrid"><a href="#"><b data-i18n="m1">Фильм</b><span>RU / EN</span></a><a href="#"><b data-i18n="m2">Манифест</b><span>PDF</span></a><a href="#"><b data-i18n="m3">Презентация</b><span>PDF / PPTX</span></a><a href="#"><b data-i18n="m4">Исследования и диалог</b><span data-i18n="developing">В разработке</span></a></div></section>
+<section class="materials" id="materials"><div class="kicker" data-i18n="materialsKicker">БИБЛИОТЕКА ПРОЕКТА</div><h2 data-i18n="materialsTitle">Материалы</h2><div class="materialGrid materialGridDocs">
+<article class="materialDoc"><b>Манифест</b><p>Короткий текст проекта</p><div class="docLangs"><a href="documents/Manifesto_RU.pdf" target="_blank">RU</a><a href="documents/Manifesto_EN.pdf" target="_blank">EN</a><a href="documents/Manifesto_UA.pdf" target="_blank">UA</a></div></article>
+<article class="materialDoc"><b>Стратегия «Цивилизация Земли»</b><p>Полный документ проекта</p><div class="docLangs"><a href="documents/Civilization_of_Earth_RU.pdf" target="_blank">RU</a><a href="documents/Civilization_of_Earth_EN.pdf" target="_blank">EN</a><a href="documents/Civilization_of_Earth_UA.pdf" target="_blank">UA</a></div></article>
+</div></section>
 <section class="closing" id="contact"><div class="earthGlow"></div><div class="closingContent"><div class="kicker" data-i18n="futureKicker">ОБЩЕЕ БУДУЩЕЕ</div><h2 data-i18n="futureTitle">Какой цивилизацией мы станем?</h2><p data-i18n="futureText">Не цивилизацией, которая покорила Землю, а цивилизацией, которая научилась быть хранителем жизни на Земле.</p><a class="btn primary" href="mailto:contact@example.com" data-i18n="contactBtn">Присоединиться к диалогу</a></div></section>
 </main>
 <footer><b>CIVILIZATION OF EARTH</b><span data-i18n="footer">Одна планета. Общее будущее.</span><span>© 2026</span></footer>

@@ -23,6 +23,8 @@ html[dir="rtl"] .language-dropdown{right:auto;left:0;text-align:right}
 .materialGridDocs .docLangs a{display:inline-flex;align-items:center;justify-content:center;width:58px;height:36px;min-width:58px;min-height:0;padding:0;border:1px solid rgba(111,203,255,.55);border-radius:999px;color:#7fd3ff;text-decoration:none;font:600 13px/1 Arial,sans-serif;letter-spacing:.08em}
 .materialGridDocs .docLangs a:hover{background:rgba(127,211,255,.12)}
 @media(max-width:760px){.materialGridDocs{grid-template-columns:1fr}.materialGridDocs .materialDoc{min-height:170px}}
+
+.contactFormWrap{margin-top:30px;max-width:760px;width:100%}.contactFormTitle{margin:0 0 16px;font:600 22px/1.2 Georgia,serif}.contactForm{display:grid;grid-template-columns:1fr 1fr;gap:12px}.contactForm input,.contactForm textarea{box-sizing:border-box;width:100%;border:1px solid rgba(255,255,255,.34);background:rgba(5,24,38,.62);color:#fff;border-radius:10px;padding:13px 14px;font:inherit;outline:none}.contactForm input::placeholder,.contactForm textarea::placeholder{color:rgba(255,255,255,.68)}.contactForm input:focus,.contactForm textarea:focus{border-color:#72cfff}.contactForm .full{grid-column:1/-1}.contactForm textarea{min-height:130px;resize:vertical}.contactForm button{justify-self:start;border:0;cursor:pointer}.contactForm button[disabled]{opacity:.65;cursor:wait}.contactStatus{grid-column:1/-1;min-height:1.4em;margin:0;color:#9ee2b0}.contactStatus.error{color:#ffb3b3}.contactDirect{margin:16px 0 0;font-size:14px;color:rgba(255,255,255,.78)}.contactDirect a{color:#8bd7ff;text-decoration:none}.contactDirect a:hover{text-decoration:underline}.contactHp{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}@media(max-width:680px){.contactForm{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -52,7 +54,7 @@ html[dir="rtl"] .language-dropdown{right:auto;left:0;text-align:right}
 <article class="materialDoc"><b>Манифест</b><p>Короткий текст проекта</p><div class="docLangs"><a href="documents/Manifesto_RU.pdf" target="_blank">RU</a><a href="documents/Manifesto_EN.pdf" target="_blank">EN</a><a href="documents/Manifesto_UA.pdf" target="_blank">UA</a></div></article>
 <article class="materialDoc"><b>Стратегия «Цивилизация Земли»</b><p>Полный документ проекта</p><div class="docLangs"><a href="documents/Civilization_of_Earth_RU.pdf" target="_blank">RU</a><a href="documents/Civilization_of_Earth_EN.pdf" target="_blank">EN</a><a href="documents/Civilization_of_Earth_UA.pdf" target="_blank">UA</a></div></article>
 </div></section>
-<section class="closing" id="contact"><div class="earthGlow"></div><div class="closingContent"><div class="kicker" data-i18n="futureKicker">ОБЩЕЕ БУДУЩЕЕ</div><h2 data-i18n="futureTitle">Какой цивилизацией мы станем?</h2><p data-i18n="futureText">Не цивилизацией, которая покорила Землю, а цивилизацией, которая научилась быть хранителем жизни на Земле.</p><a class="btn primary" href="mailto:contact@example.com" data-i18n="contactBtn">Присоединиться к диалогу</a></div></section>
+<section class="closing" id="contact"><div class="earthGlow"></div><div class="closingContent"><div class="kicker" data-i18n="futureKicker">ОБЩЕЕ БУДУЩЕЕ</div><h2 data-i18n="futureTitle">Какой цивилизацией мы станем?</h2><p data-i18n="futureText">Не цивилизацией, которая покорила Землю, а цивилизацией, которая научилась быть хранителем жизни на Земле.</p><div class="contactFormWrap"><h3 class="contactFormTitle">Написать нам</h3><form class="contactForm" action="https://formspree.io/f/xwlpqalw" method="POST" data-success="Спасибо. Ваше сообщение отправлено." data-error="Не удалось отправить сообщение. Попробуйте ещё раз."><input type="text" name="name" autocomplete="name" placeholder="Ваше имя (необязательно)"><input type="email" name="email" autocomplete="email" placeholder="Ваш e-mail для ответа"><input class="full" type="text" name="subject" placeholder="Тема"><textarea class="full" name="message" required placeholder="Ваше сообщение"></textarea><label class="contactHp" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label><input type="hidden" name="_subject" value="Civilization of Earth — website message"><button class="btn primary" type="submit">Отправить сообщение</button><p class="contactStatus" role="status" aria-live="polite"></p></form><p class="contactDirect">Или напишите нам напрямую: <a href="mailto:civilizationofearth@proton.me">civilizationofearth@proton.me</a></p></div></div></section>
 </main>
 <footer><b>CIVILIZATION OF EARTH</b><span data-i18n="footer">Одна планета. Общее будущее.</span><span>© 2026</span></footer>
 
@@ -83,6 +85,18 @@ document.querySelectorAll('.videoFrame').forEach(function(frame){
       if(wasPlaying) video.play().catch(function(){});
     });
   });
+});
+</script>
+
+<script>
+document.querySelectorAll('.contactForm').forEach(function(form){
+ const status=form.querySelector('.contactStatus'), btn=form.querySelector('button[type="submit"]');
+ form.addEventListener('submit',async function(e){
+  e.preventDefault(); status.textContent=''; status.classList.remove('error'); btn.disabled=true;
+  try{const r=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}}); if(r.ok){form.reset();status.textContent=form.dataset.success;}else{throw new Error('send');}}
+  catch(err){status.textContent=form.dataset.error;status.classList.add('error');}
+  finally{btn.disabled=false;}
+ });
 });
 </script>
 </body></html>
